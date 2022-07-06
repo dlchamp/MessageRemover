@@ -23,7 +23,7 @@ SOFTWARE.
 """
 
 from sys import version as py_version
-from typing import List, Optional
+from typing import Optional
 
 from disnake import (
     ApplicationCommandInteraction,
@@ -98,7 +98,7 @@ async def purge_channel(
     embed: Embed = Embed(title="Deleted Messages")
 
     if with_terms:
-        with_terms: List[str] = with_terms.lower().split(",")
+        with_terms: list[str] = with_terms.lower().split(",")
         embed.add_field(name="With Terms", value=", ".join(with_terms), inline=False)
 
         def message_check(m: Message) -> bool:
