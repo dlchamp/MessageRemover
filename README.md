@@ -80,3 +80,11 @@ limit | The max number of messages to iterate through, this does not mean that m
 author | If any messages are from this author, they will be deleted
 
 **Note: DO NOT use `with_terms` and `without_terms` together**
+
+
+##### Example commands
+`/purge channel: #quotes, without_terms: -," limit: 100`  
+This command would iterate through the last 100 messages in the targeted #quotes channel. Any message does NOT contain both `-` and `"` would be deleted
+
+`/purge with_terms: party,time,excellent limit: 10, author: @DLCHAMP`  
+This command would iterate through the last 10 messages from the channel where the command is used.  If the message includes either `party`, `time`, or `excellent` AND is from the member @DLCHAMP it will be deleted
