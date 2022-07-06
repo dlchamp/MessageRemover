@@ -1,3 +1,27 @@
+"""
+MIT License
+
+Copyright (c) 2022 DLCHAMP
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 from sys import version as py_version
 from typing import List, Optional
 
@@ -15,6 +39,8 @@ from disnake.ext import commands
 from messageremover import __version__ as bot_version
 
 # Configure bot's gateway intents and instantiate the Interaction bot object
+# add guild IDs into test_guilds to prevent global registration and instantly have commands
+# working with guilds whose IDs are in this list (ex: test_guilds=[1234456789,54433635533,342234234344])
 intents = Intents.default()
 intents.members = True
 intents.message_content = True
