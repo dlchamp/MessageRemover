@@ -14,9 +14,14 @@ from disnake.ext import commands
 
 from messageremover import __version__ as bot_version
 
-bot = commands.InteractionBot(intents=Intents.all(), test_guilds=[947543739671412878])
+# Configure bot's gateway intents and instantiate the Interaction bot object
+intents = Intents.default()
+intents.members = True
+intents.message_content = True
+bot = commands.InteractionBot(intents=intents, test_guilds=[])
 
 
+# Begin bot event listeners
 @bot.listen()
 async def on_ready():
     """Invoked when the bot is ready"""
