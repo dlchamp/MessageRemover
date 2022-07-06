@@ -94,6 +94,9 @@ async def purge_channel(
             ephemeral=True,
         )
 
+    # defer long calculations
+    await interaction.response.defer(ephemeral=True)
+
     channel: TextChannel = channel or interaction.channel
     embed: Embed = Embed(title="Deleted Messages")
 
@@ -111,7 +114,7 @@ async def purge_channel(
             )
 
     if without_terms:
-        without_terms: List[str] = without_terms.lower().split(",")
+        without_terms: list[str] = without_terms.lower().split(",")
         embed.add_field(
             name="Without Terms", value=", ".join(without_terms), inline=False
         )
@@ -125,7 +128,7 @@ async def purge_channel(
                 and m.author == author
             )
 
-    deleted: List[Message] = await channel.purge(limit=limit, check=message_check)
+    deleted: list[Message] = await channel.purge(limit=limit, check=message_check)
 
     embed.add_field(
         name="Target Channel | Target Author",
@@ -139,4 +142,4 @@ async def purge_channel(
         inline=False,
     )
 
-    await interaction.response.send_message(embed=embed, ephemeral=True)
+    await interaction.edit_original_message(embed=embed)
